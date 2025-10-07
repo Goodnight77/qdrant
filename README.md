@@ -20,8 +20,7 @@
 </p>
 
 **Qdrant** (read: _quadrant_) is a vector similarity search engine and vector database.
-It provides a production-ready service with a convenient API to store, search, and manage points—vectors with an additional payload
-Qdrant is tailored to extended filtering support. It makes it useful for all sorts of neural-network or semantic-based matching, faceted search, and other applications.
+It provides a production-ready service with a convenient API to store, search, and manage points—vectors with an additional payload. Qdrant is tailored for extended filtering support. It makes it useful for all sorts of neural-network or semantic-based matching, faceted search, and other applications.
 
 Qdrant is written in Rust 🦀, which makes it fast and reliable even under high load. See [benchmarks](https://qdrant.tech/benchmarks/).
 
@@ -43,7 +42,7 @@ Qdrant is also available as a fully managed **[Qdrant Cloud](https://cloud.qdran
 pip install qdrant-client
 ```
 
-The python client offers a convenient way to start with Qdrant locally:
+The Python client offers a convenient way to start with Qdrant locally:
 
 ```python
 from qdrant_client import QdrantClient
@@ -189,7 +188,7 @@ ensuring that you can implement any desired business logic on top of similarity 
 
 To address the limitations of vector embeddings when searching for specific keywords, Qdrant introduces support for sparse vectors in addition to the regular dense ones.
 
-Sparse vectors can be viewed as an generalization of BM25 or TF-IDF ranking. They enable you to harness the capabilities of transformer-based neural networks to weigh individual tokens effectively.
+Sparse vectors can be viewed as a generalization of BM25 or TF-IDF ranking. They enable you to harness the capabilities of transformer-based neural networks to weigh individual tokens effectively.
 
 
 ### Vector Quantization and On-Disk Storage
@@ -209,7 +208,7 @@ Qdrant offers comprehensive horizontal scaling support through two key mechanism
 
 * **Query Planning and Payload Indexes** - leverages stored payload information to optimize query execution strategy.
 * **SIMD Hardware Acceleration** - utilizes modern CPU x86-x64 and Neon architectures to deliver better performance.
-* **Async I/O** - uses `io_uring` to maximize disk throughput utilization even on a network-attached storage.
+* **Async I/O** - uses `io_uring` to maximize disk throughput utilization even on network-attached storage.
 * **Write-Ahead Logging** - ensures data persistence with update confirmation, even during power outages.
 
 

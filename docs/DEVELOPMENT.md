@@ -35,7 +35,7 @@ docker run -p 6333:6333 \
 ```
 
 * `/qdrant/storage` - is the place where Qdrant persists all your data.
-Make sure to mount it as a volume, otherwise docker will drop it with the container.
+Make sure to mount it as a volume, otherwise Docker will drop it with the container.
 - `/qdrant/snapshots` - is the place where Qdrant stores [snapshots](https://qdrant.tech/documentation/concepts/snapshots/)
 * `/qdrant/config/production.yaml` - is the file with engine configuration. You can override any value from the [reference config](https://github.com/qdrant/qdrant/blob/master/config/config.yaml)
 
@@ -208,21 +208,21 @@ Basic usage:
 
 ### Real-time profiling
 
-Qdrant have basic [`tracing`] support with [`Tracy`] profiler and [`tokio-console`] integrations
+Qdrant has basic [`tracing`] support with [`Tracy`] profiler and [`tokio-console`] integrations
 that can be enabled with optional features.
 
 - [`tracing`] is an _optional_ dependency that can be enabled with `tracing` feature
 - `tracy` feature enables [`Tracy`] profiler integration
 - `console` feature enables [`tokio-console`] integration
-  - note, that you'll also have to [pass `--cfg tokio_unstable` arguments to `rustc`][tokio-tracing] to enable this feature
-  - by default [`tokio-console`] binds to `127.0.0.1:6669`
-  - if you want to connect [`tokio-console`] to Qdrant instance running inside a Docker container
-    or on remote server, you can define `TOKIO_CONSOLE_BIND` when running Qdrant to override it
-    (e.g., `TOKIO_CONSOLE_BIND=0.0.0.0:6669` to listen on all interfaces)
+    - by default [`tokio-console`] binds to `127.0.0.1:6669`
+    - if you want to connect [`tokio-console`] to a Qdrant instance running inside a Docker container
+        or on a remote server, you can define `TOKIO_CONSOLE_BIND` when running Qdrant to override it
+        (e.g., `TOKIO_CONSOLE_BIND=0.0.0.0:6669` to listen on all interfaces)
 - `tokio-tracing` feature explicitly enables [`Tokio` crate tracing][tokio-tracing]
-  - note, that you'll also have to [pass `--cfg tokio_unstable` arguments to `rustc`][tokio-tracing] to enable this feature
-  - this is required (and enabled automatically) by the `console` feature
-  - but you can enable it explicitly with the `tracy` feature, to see Tokio traces in [`Tracy`] profiler
+    - this is required (and enabled automatically) by the `console` feature
+    - you can enable it explicitly with the `tracy` feature to see Tokio traces in [`Tracy`] profiler
+
+Note: both the `console` and `tokio-tracing` features require passing `--cfg tokio_unstable` argument to `rustc` to enable this feature (see [tokio-tracing]).
 
 Qdrant code is **not** instrumented by default, so you'll have to manually add `#[tracing::instrument]` attributes
 on functions and methods that you want to profile.
